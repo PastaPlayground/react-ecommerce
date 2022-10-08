@@ -7,6 +7,12 @@ const login = require("../route/login");
 const getItems = require("../route/get-items");
 const getItem = require("../route/get-item");
 const getStores = require("../route/get-stores");
+const addCart = require("../route/add-to-cart");
+
+// OWNER ROUTES
+const addItem = require("../route/owner/add-item");
+const removeItem = require("../route/owner/remove-item");
+const updateItem = require("../route/owner/update-item");
 
 const port = process.env.API_PORT || 4000;
 const app = express();
@@ -27,3 +33,7 @@ login(app);
 getItems(app);
 getItem(app);
 getStores(app);
+addCart(app);
+addItem(app);
+removeItem(app);
+updateItem(app);

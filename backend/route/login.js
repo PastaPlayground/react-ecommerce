@@ -11,8 +11,10 @@ const Login = function (app) {
       if (!login) {
         return errorHandler({ message: "Invalid Credentials", code: 400 }, req, res);
       } else {
-        const jwt = await GenerateJWT({ username });
-        res.send({ code: 200, username: login.username, message: "Success", token: jwt });
+        const store = login.store;
+        const jwt = await GenerateJWT({ username, store });
+
+        res.send({ code: 200, username: login.username, store, message: "Success", token: jwt });
       }
     } else {
       return errorHandler({ message: "Please fill up all fields" }, req, res);

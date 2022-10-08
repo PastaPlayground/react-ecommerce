@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const AuthUser = (username, password) => {
   return new Promise((resolve, reject) => {
-    const queryGetUser = `SELECT username, password FROM accounts WHERE username = ?`;
+    const queryGetUser = `SELECT username, password, store FROM accounts WHERE username = ?`;
     connection.query(queryGetUser, [username], (error, user) => {
       if (error) reject(error);
       else if (user.length > 0) {
